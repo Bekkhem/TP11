@@ -5,7 +5,7 @@ const {} = require('../schemas');
 var router = express.Router();
 const itemService = require('../services/item');
 
-router.get('/:id', auth.ensureSignedIn, async function(req, res, next) {
+router.get('/id/:id', auth.ensureSignedIn, async function(req, res, next) {
     const { id } = req.params;
     const result = await itemService.findById(id);
     res.json(result);
@@ -20,7 +20,7 @@ router.post('/create', auth.ensureSignedIn, async(req, res, next) => {
 })
 
 // all users
-router.post('/all', async(req, res) => {
+router.get('/all', async(req, res) => {
     // to do
     try {
         const result = await itemService.findAll();

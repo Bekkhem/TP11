@@ -6,7 +6,7 @@ var router = express.Router();
 const productService = require('../services/product');
 const { create } = require('../models/categories');
 
-router.get('/:id', auth.ensureSignedIn, async function(req, res, next) {
+router.get('/id/:id', auth.ensureSignedIn, async function(req, res, next) {
     const { id } = req.params;
     const result = await productService.findById(id);
     res.json(result);
@@ -26,7 +26,7 @@ router.post('/create', auth.ensureSignedIn, async(req, res, next) => {
 })
 
 // all users
-router.post('/all', auth.ensureSignedIn, async(req, res, next) => {
+router.get('/all', auth.ensureSignedIn, async(req, res, next) => {
     // to do
     try {
         const result = await productService.findAll();
